@@ -29,3 +29,16 @@ bin/magento setup:install --backend-frontname=backend \
      	--page-cache-redis-server="${REDIS_HOST}" \
      	--page-cache-redis-db=1 \
      	--page-cache-redis-port="${REDIS_PORT}"
+
+
+bin/magento config:set --lock-env web/unsecure/base_url "${MAGENTO_ROUTE}"
+bin/magento config:set --lock-env web/secure/base_url "${MAGENTO_ROUTE}"
+bin/magento config:set --lock-env web/secure/offloader_header X-Forwarded-Proto
+bin/magento config:set --lock-env web/secure/use_in_frontend 1
+bin/magento config:set --lock-env web/secure/use_in_adminhtml 1
+bin/magento config:set --lock-env web/seo/use_rewrites 1
+bin/magento config:set --lock-env system/full_page_cache/caching_application 2
+bin/magento config:set --lock-env system/full_page_cache/ttl 604800
+bin/magento config:set --lock-env dev/static/sign 0
+bin/magento cache:disable block_html
+bin/magento cache:flush
