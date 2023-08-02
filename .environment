@@ -10,7 +10,7 @@ export RABBIT_USER=$(echo "${RABBIT}" | jq -r '.username')
 export RABBIT_PASS=$(echo "${RABBIT}" | jq -r '.password')
 
 export DB_HOST=$(echo "${DATABASE}" | jq -r '.host')
-export DB_SCHEME=$(echo "${DATABASE}" | jq -r '.scheme')
+export DB_PATH=$(echo "${DATABASE}" | jq -r '.path')
 export DB_USER=$(echo "${DATABASE}" | jq -r '.username')
 export DB_PASS=$(echo "${DATABASE}" | jq -r '.password')
 
