@@ -123,9 +123,9 @@ hooks:
     cp .versioned_backup/etc/* app/etc/
     #php deploy.php
     if [ ! -f './var/.magento' ]; then
-         
-    
-      
+      source .environment
+      bash ./install.sh
+      touch './var/.magento'      
     fi 
 
 # Scheduled tasks for the app.

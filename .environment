@@ -1,0 +1,23 @@
+PSHJSON=$(echo "$PLATFORM_RELATIONSHIPS" | base64 --decode)
+DATABASE=$(echo "${PSHJSON}" | jq -r '.database[0]')
+REDIS=$(echo "${PSHJSON}" | jq -r '.redis[0]')
+SEARCH=$(echo "${PSHJSON}" | jq -r '.search[0]')
+RABBIT=$(echo "${PSHJSON}" | jq -r '.rabbit[0]')
+
+export RABBIT_HOST=$(echo "${RABBIT}" | jq '.host')
+export RABBIT_PORT=$(echo "${RABBIT}" | jq '.port')
+export RABBIT_USER=$(echo "${RABBIT}" | jq '.username')
+export RABBIT_PASS=$(echo "${RABBIT}" | jq '.password')
+
+export DB_HOST=$(echo "${DATABASE}" | jq '.host')
+export DB_SCHEME=$(echo "${DATABASE}" | jq '.scheme')
+export DB_USER=$(echo "${DATABASE}" | jq '.username')
+export DB_PASS=$(echo "${DATABASE}" | jq '.password')
+
+export SEARCH_HOST=$(echo "${SEARCH}" | jq '.host')
+export SEARCH_PORT=$(echo "${SEARCH}" | jq '.port')
+export SEARCH_REL=$(echo "${SEARCH}" | jq '.rel')
+
+export REDIS_HOST=$(echo "${REDIS}" | jq '.host')
+export REDIS_PORT=$(echo "${REDIS}" | jq '.port')
+
