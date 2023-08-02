@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+bin/magento setup:install --backend-frontname=backend \
+     	--amqp-host=rabbitmq \
+     	--amqp-port=5672 \
+     	--amqp-user=guest \
+     	--amqp-password=guest \
+     	--db-host=db \
+     	--db-name=magento \
+     	--db-user=magento \
+     	--db-password=magento \
+     	--search-engine=opensearch \
+     	--opensearch-host=opensearch \
+     	--opensearch-port=9200 \
+     	--opensearch-index-prefix=magento2 \
+     	--opensearch-enable-auth=0 \
+     	--opensearch-timeout=15 \
+     	--http-cache-hosts=varnish:80 \
+     	--session-save=redis \
+     	--session-save-redis-host=redis \
+     	--session-save-redis-port=6379 \
+     	--session-save-redis-db=2   \
+     	--session-save-redis-max-concurrency=20 \
+     	--cache-backend=redis \
+     	--cache-backend-redis-server=redis \
+     	--cache-backend-redis-db=0 \
+     	--cache-backend-redis-port=6379 \
+     	--page-cache=redis \
+     	--page-cache-redis-server=redis \
+     	--page-cache-redis-db=1 \
+     	--page-cache-redis-port=6379

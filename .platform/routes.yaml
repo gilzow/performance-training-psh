@@ -1,0 +1,4 @@
+https://{default}/:
+  id: magento_route
+  type: upstream
+  upstream: magento:http
